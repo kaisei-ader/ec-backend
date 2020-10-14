@@ -8,11 +8,16 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    public function get()
+    {
+        return Product::all();
+    }
+
     public function add(Request $request)
     {
         return Product::create([
         'title' =>$request->title,
-        'path'=> Storage::put('public_image',$request->file('image')),
+        'path'=> str_replace('public','storage',Storage::put('public/product_image',$request->file('image'))),
         'price'=> $request->price,
         'text'=> $request->text,
         ]);
