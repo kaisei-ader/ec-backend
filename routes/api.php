@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::delete('carts/{id}','CartController@remove');
 Route::get('carts','CartController@getAll');
 Route::post('carts','CartController@add');
 

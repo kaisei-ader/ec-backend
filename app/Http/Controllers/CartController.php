@@ -27,4 +27,9 @@ class CartController extends Controller
     public function getAll(){
         return Cart::with('product')->get();
     }
+
+    public function remove($id){
+        return Cart::find($id)->delete();
+    }
+
 }
