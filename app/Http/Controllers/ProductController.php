@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    public function get()
+    public function get($id)
+    {
+        return Product::find($id);
+    }
+
+    public function getAll()
     {
         return Product::all();
     }

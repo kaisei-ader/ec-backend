@@ -12,5 +12,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('products','ProductController@get');
+Route::post('carts','CartController@add');
+Route::get('products/{id}','ProductController@get');
+Route::get('products','ProductController@getAll');
 Route::post('products','ProductController@add');
