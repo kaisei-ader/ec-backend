@@ -9,9 +9,22 @@ class CartController extends Controller
 {
     public function add(Request $request)
     {
-        return Cart::create([
-        'quantity' =>$request->quantity,
-        'product_id'=> $request->productId,
-        ]);
+        $cart = Cart::where('product_id', '=', $request->productId);
+        if($cart->exists()){
+            $record = $cart->first();
+            $record->update([
+                'quantity' => $record->quantity +  $request->quantity
+            ]);
+            return $record;
+        } else {
+            return Cart::create([
+                'quantity' =>$request->quantity,
+                'product_id'=> $request->productId,
+            ]);
+        }
+    }
+
+    public function getAll(){
+        return Cart::with('product')->get();
     }
 }
