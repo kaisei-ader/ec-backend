@@ -22,7 +22,7 @@ class ProductController extends Controller
     {
         return Product::create([
         'title' =>$request->title,
-        'path'=> str_replace('public','storage',Storage::put('public/product_image',$request->file('image'))),
+        'path'=> str_replace('public','storage',Storage::disk('local')->put('public/product_image',$request->file('image'))),
         'price'=> $request->price,
         'text'=> $request->text,
         ]);
